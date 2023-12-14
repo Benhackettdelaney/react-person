@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import people from "./data/people.json";
+import PersonCard from "./components/PersonCard";
 
-function App() {
+const App = () => {
+  const peopleDivs = people.results.map((person) => {
+    return <PersonCard key={person.name.first} person={person} />;
+  });
+
+  people.results.forEach((person) => {
+    console.log(person.quote);
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>People</h1>
+      {peopleDivs}
+    </>
   );
-}
+};
 
 export default App;
